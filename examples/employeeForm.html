@@ -17,6 +17,11 @@
   <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Argon CSS -->
   <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
+  <style type="text/css">
+    .table.align-items-center td, .table.align-items-center th {
+     vertical-align: top; 
+    }
+  </style>
 </head>
 
 <body style="overflow:hidden;">
@@ -90,7 +95,7 @@
                   <span>Support</span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="../login.html" class="dropdown-item">
+                <a href="../index.html" class="dropdown-item">
                   <i class="ni ni-user-run"></i>
                   <span>Logout</span>
                 </a>
@@ -255,14 +260,36 @@
                 </div>
                 <hr class="my-4" />
                 <!-- Description -->
-                <h6 class="heading-small text-muted mb-4">About me</h6>
-                <div class="pl-lg-4">
-                  <div class="form-group">
-                    <label class="form-control-label">About Me</label>
-                    <textarea rows="4" class="form-control" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
-                  </div>
+                <h6 class="heading-small text-muted mb-4">Experience Details</h6>
+                <div class="pl-lg-12">
+                    <div class="table-responsive">
+                      <table class="table align-items-center table-flush" style="height: 50vh;overflow-y:scroll;overflow-x:hidden; ">
+                        <thead class="thead-light">
+                          <tr>
+                            <th scope="col" class="sort" data-sort="name">Employee Id</th>
+                            <th scope="col" class="sort" data-sort="status">Company Name</th>
+                            <th>Email Address</th>
+                            <th scope="col">Start Date</th>
+                            <th scope="col" class="sort" data-sort="completion">End Date</th>
+                            <th scope="col" class="sort" data-sort="completion"></th>
+                          </tr>
+                        </thead>
+                        <tbody class="list" id="expTableBody">
+                          <tr id="tadbleRow-0">
+                            <td><input type="text" id="input-empId" class="form-control" placeholder="Employee Id"></td>
+                             <td><input type="text" id="input-empId" class="form-control" placeholder="Company Name"></td>
+                              <td><input type="text" id="input-empId" class="form-control" placeholder="Email Address"></td>
+                               <td><input type="text" id="input-empId" class="form-control" placeholder="Start Date"></td>
+                                <td><input type="text" id="input-empId" class="form-control" placeholder="End Date"></td>
+                                 <td><button type="button" id="addRow" class="btn btn-primary">Add</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                 </div>
               </form>
+                <div class="pl-lg-12 text-right"><button class="btn btn-success">Submit</button></div>
+            <br/>
             </div>
 
           </div>
@@ -304,6 +331,24 @@
   <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
   <!-- Argon JS -->
   <script src="../assets/js/argon.js?v=1.2.0"></script>
+  <script>
+    var count = 1;
+    $('#addRow').click(function(){
+
+        $('#expTableBody').append('<tr id="tadbleRow-'+count+'"><td><input type="text" id="input-empId-'+count+'" class="form-control" placeholder="Employee Id"></td>'+
+                             '<td><input type="text" id="input-cmpnyName-'+count+'" class="form-control" placeholder="Company Name"></td>'+
+                              '<td><input type="text" id="input-email-'+count+'" class="form-control" placeholder="Email Address"></td>'+
+                               '<td><input type="text" id="input-startDate-'+count+'" class="form-control" placeholder="Start Date"></td>'+
+                                '<td><input type="text" id="input-endDate-'+count+'" class="form-control" placeholder="End Date"></td>'+
+                                 '<td><button type="button" id="delRow-'+count+'" class="btn btn-danger" onclick="delRow('+count+')">Delete</button></td></tr>');
+        count ++;
+    });
+
+    function delRow(count){
+      $('#tadbleRow-'+count).remove();
+    }
+
+  </script>
 </body>
 
 </html>
