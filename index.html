@@ -179,7 +179,7 @@
                   </label>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary my-4" onclick="login()">Sign in</button>
+                  <button type="button" id="signInBtn" class="btn btn-primary my-4" onclick="login()">Sign in</button>
                 </div>
               </form>
             </div>
@@ -235,6 +235,12 @@
   <!-- Argon JS -->
   <script src="./assets/js/argon.js?v=1.2.0"></script>
   <script>
+    $('#pass').keypress(function(event){
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13'){
+            $('#signInBtn').click();
+        }
+    });
     
     function login(){
       var emailAddress = $("#email").val();
